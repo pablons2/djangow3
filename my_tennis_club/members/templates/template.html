@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% with firstname="pabloN" %}
+<h1>Hello {{ firstname }}, how are you?</h1>
+{% if greeting == 1 %}
+  <h1>Hello</h1>
+{% endif %} 
+<!-- <ul>
+  {% for x in mymembers %}
+    <li>{{ x.firstname }}</li>
+  {% endfor %}
+</ul> -->
+{% if greeting == 1 %}
+  <h1>Hello</h1>
+{% elif greeting == 2 %}
+  <h1>Welcome</h1>
+{% endif %} 
 
-{% for x in fruits %}
-  <h1>{{ x }}</h1>
-{% endfor %}
+{% endwith %}
 
-<p>In views.py you can see what the fruits variable looks like.</p>
-
-</body>
-</html>
+{% if greeting == 1 %}
+  <h1>Hello</h1>
+{% elif greeting == 2 %}
+  <h1>Welcome</h1>
+{% else %}
+  <h1>Goodbye</h1>
+{% endif %} 
