@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
-
+from django.db.models import Q
 def members(request):
   mymembers = Member.objects.all().values()
   template = loader.get_template('all_members.html')
@@ -23,9 +23,9 @@ def main(request):
   return HttpResponse(template.render())
 
 def testing(request):
+  mydata = Member.objects.all()
   template = loader.get_template('template.html')
   context = {
-    'x': ['Apple', 'Banana', 'Cherry'], 
-    'y': ['Apple', 'Banana', 'Cherry'], 
+    'mymembers': mydata,
   }
-  return HttpResponse(template.render(context, request))  
+  return HttpResponse(template.render(context, request))
